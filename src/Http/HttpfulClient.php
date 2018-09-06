@@ -62,6 +62,21 @@ class HttpfulClient implements HttpClientInterface
         return $response;
     }
 
+    public function put($uri, $data, $sendsType, $options = null)
+    {
+        try {
+            $request = Client::put($uri)
+                ->sendsType($sendsType)
+                ->body($this->prepareBodyForPost($data, $sendsType));
+
+            $this->addOptionsToRequest($request, $options);
+            $response = $request->send();
+        } catch (\Exception $e) {
+            throw new HttpRequestException('Unexpected server response.' . $e->getMessage(), $e->getCode());
+        }
+        return $response;
+    }
+
     /**
      * @param string $uri
      * @param $data
