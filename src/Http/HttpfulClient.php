@@ -108,7 +108,7 @@ class HttpfulClient implements HttpClientInterface
     protected function prepareBodyForPost($data, $sendsType)
     {
         if ($sendsType === Mime::JSON) {
-            $data = json_encode($data);
+            $data = json_encode($data, JSON_UNESCAPED_SLASHES);
         } elseif ($sendsType == Mime::FORM) {
             $data = http_build_query($data);
         }
