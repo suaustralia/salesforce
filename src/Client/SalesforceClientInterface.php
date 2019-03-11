@@ -42,7 +42,8 @@ interface SalesforceClientInterface
      * @param string|null $action
      * @param null $query
      * @param null $data
+     * @param array $headers
      * @return mixed
      */
-    public function patch($action = null, $data = null, $query = null);
+    public function patch($action = null, $data = null, $query = null, $headers = []);
 }

@@ -148,16 +148,17 @@ class SalesforceClient implements SalesforceClientInterface
      * @param string|null $action
      * @param null $data
      * @param null $query
+     * @param array $headers
      * @return ResponseInterface
      */
-    public function patch($action = null, $data = null, $query = null)
+    public function patch($action = null, $data = null, $query = null, $headers = [])
     {
         try {
             $httpResponse = $this->httpClient->patch(
                 $this->urlGenerator->getUrl($action, $this->resolveParams($query)),
                 $data,
                 self::BODY_TYPE_JSON,
-                ['headers' => $this->getAuthorizationHeaders()]
+                ['headers' => array_merge($headers, $this->getAuthorizationHeaders())]
             );
             return $this->responseCreator->create($httpResponse);
         } catch (BadResponseException $e) {
