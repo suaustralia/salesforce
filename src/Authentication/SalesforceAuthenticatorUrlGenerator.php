@@ -11,17 +11,11 @@ use GenesisGlobal\Salesforce\Http\UrlGeneratorInterface;
 class SalesforceAuthenticatorUrlGenerator implements UrlGeneratorInterface
 {
     /**
-     * @var string
-     */
-    protected $endpoint;
-
-    /**
      * SalesforceAuthenticatorUrlGenerator constructor.
-     * @param $endpoint
+     * @param string $endpoint
      */
-    public function __construct($endpoint)
+    public function __construct(protected string $endpoint)
     {
-        $this->endpoint = $endpoint;
     }
 
     /**

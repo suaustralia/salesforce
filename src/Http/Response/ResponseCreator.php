@@ -34,8 +34,8 @@ class ResponseCreator implements ResponseCreatorInterface
             // if errors exist, lets add it!
             if (isset($httpResponse->body->errors) && !empty($httpResponse->body->errors)) {
                 foreach ($httpResponse->body->errors as $errorFromSalesforce) {
-                    $errorCode = (is_object($errorFromSalesforce) and isset($errorFromSalesforce->errorCode) ? $errorFromSalesforce->errorCode : null);
-                    $errorMessage = (is_object($errorFromSalesforce) and isset($errorFromSalesforce->message) ? $errorFromSalesforce->message : $errorFromSalesforce);
+                    $errorCode = (is_object($errorFromSalesforce) and $errorFromSalesforce->errorCode ?? null);
+                    $errorMessage = (is_object($errorFromSalesforce) and $errorFromSalesforce->message ?? $errorFromSalesforce);
 
                     $error = new ResponseError();
                     $error->setCode($errorCode);

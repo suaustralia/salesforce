@@ -32,7 +32,7 @@ class SalesforceClientTest extends TestCase
     protected $responseCreator;
 
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->httpClient = $this->createMock(HttpClientInterface::class);
         $this->urlGenerator = $this->createMock(UrlGeneratorInterface::class);
@@ -64,7 +64,7 @@ class SalesforceClientTest extends TestCase
         $this->assertEquals('SALESFORCE_RESPONSE_MALFORMED', $response->getErrors()[0]->getCode());
 
         $response = $client->get();
-        $this->assertObjectHasAttribute('testkey', $response->getContent());
+        $this->assertObjectHasProperty('testkey', $response->getContent());
         $this->assertEquals('testresponsevalue', $response->getContent()->testkey);
     }
 }

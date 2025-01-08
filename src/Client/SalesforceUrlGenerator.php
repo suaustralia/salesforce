@@ -11,24 +11,12 @@ class SalesforceUrlGenerator implements UrlGeneratorInterface
 {
 
     /**
-     * @var string
-     */
-    protected $version;
-
-    /**
-     * @var string
-     */
-    protected $endpoint;
-
-    /**
      * SalesforceUrlGenerator constructor.
-     * @param $endpoint
-     * @param $version
+     * @param string $endpoint
+     * @param string $version
      */
-    public function __construct($endpoint, $version)
+    public function __construct(protected string $endpoint, protected string $version)
     {
-        $this->endpoint = $endpoint;
-        $this->version = $version;
     }
 
     /**
@@ -104,7 +92,7 @@ class SalesforceUrlGenerator implements UrlGeneratorInterface
             $glue = '?';
             foreach ($parameters as $key => $value) {
                 //$path .= $glue . $key . '=' . strtr($value, ' ', '+');
-                $path .= $glue . $key . '=' . urlencode($value);
+                $path .= $glue . $key . '=' . urlencode((string) $value);
                 $glue = '&';
             }
         }

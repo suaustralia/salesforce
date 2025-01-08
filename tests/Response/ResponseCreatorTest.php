@@ -64,7 +64,7 @@ class ResponseCreatorTest extends TestCase
         );
 
         $responseWithSuccess = new HttpfulResponse(json_encode(['someKey' => 'someValue']), Mime::JSON, 200);
-        $this->assertObjectHasAttribute('someKey', $creator->create($responseWithSuccess)->getContent());
+        $this->assertObjectHasProperty('someKey', $creator->create($responseWithSuccess)->getContent());
         $this->assertEquals('someValue', $creator->create($responseWithSuccess)->getContent()->someKey);
     }
 }

@@ -10,20 +10,14 @@ namespace GenesisGlobal\Salesforce\Http\Exception;
 class BadResponseException extends \Exception
 {
     /**
-     * @var mixed
-     */
-    protected $response;
-
-    /**
      * BadResponseException constructor.
      * @param string $message
      * @param int $code
      * @param null $previous
-     * @param mixed $response
+     * @param mixed|null $response
      */
-    public function __construct($message = "", $code = 0, $previous = null, $response = null)
+    public function __construct(string $message = "", int $code = 0, $previous = null, protected mixed $response = null)
     {
-        $this->response = $response;
         parent::__construct($message, $code, $previous);
     }
 

@@ -13,11 +13,8 @@ use Httpful\Request;
 class HttpfulClient implements HttpClientInterface
 {
 
-    private $proxy;
-
-    public function __construct($proxy = null)
+    public function __construct(private $proxy = null)
     {
-        $this->proxy = $proxy;
     }
 
     /**

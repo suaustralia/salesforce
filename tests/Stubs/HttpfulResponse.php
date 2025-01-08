@@ -17,7 +17,7 @@ class HttpfulResponse extends Response
     public function __construct($body, $contentType, $status)
     {
         // remove next line replace them to spaces
-        $body = trim(preg_replace('/\s\s+/', ' ', $body));
+        $body = trim((string) preg_replace('/\s\s+/', ' ', $body));
 
         // build default headers with status and Content-Type from stub constructor
         $headers = 'HTTP/1.1 ' . $status .' OK

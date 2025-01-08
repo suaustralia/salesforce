@@ -24,7 +24,7 @@ class SalesforceUsernamePasswordAuthenticatorTest extends TestCase
 
     protected $credentialsKeeper;
 
-    public function setUp()
+    public function setUp(): void
     {
         $url = 'http://test-url.com';
         $authData = [

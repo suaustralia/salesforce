@@ -9,17 +9,13 @@ namespace GenesisGlobal\Salesforce\Authentication;
 class Credentials implements CredentialsKeeperInterface
 {
     /**
-     * @var
-     */
-    protected $credentials;
-
-    /**
      * UsernamePasswordCredentials constructor.
      * @param $credentials
      */
-    public function __construct($credentials)
+    public function __construct(
+        protected $credentials
+    )
     {
-        $this->credentials = $credentials;
     }
 
     /**
