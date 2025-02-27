@@ -92,7 +92,7 @@ class SalesforceUrlGenerator implements UrlGeneratorInterface
             $glue = '?';
             foreach ($parameters as $key => $value) {
                 //$path .= $glue . $key . '=' . strtr($value, ' ', '+');
-                $path .= $glue . $key . '=' . urlencode((string) $value);
+                $path .= $glue . $key . '=' . $value; // No need to urlencode $value as httpful seems to do it for us, otherwise we double encode
                 $glue = '&';
             }
         }
